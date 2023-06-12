@@ -18,10 +18,10 @@ def error404(e):
 	return render_template('404.html')
 
 @app.route("/")
-@app.route("/home")
-def home():
+@app.route("/index")
+def index():
 	print(get_usertype(session))
-	return render_template('home.html', username = get_username(session), usertype = get_usertype(session))
+	return render_template('index.html', username = get_username(session), usertype = get_usertype(session))
 
 @app.route("/about")
 def about():
@@ -275,7 +275,7 @@ def login():
 				session['username'] = username
 				session['usertype'] = usertype
 				flash('You have been logged in!', 'success')
-				return render_template('home.html', username=get_username(session), usertype = get_usertype(session))
+				return render_template('index.html', username=get_username(session), usertype = get_usertype(session))
 
 	return render_template('login.html', username = get_username(session), usertype = get_usertype(session))
 	con.close()
@@ -301,7 +301,7 @@ def logout():
 	session['Basket'] = ''
 
 	flash('You have been logged out', 'success')
-	return render_template('home.html', username = get_username(session), usertype = get_usertype(session))
+	return render_template('index.html', username = get_username(session), usertype = get_usertype(session))
 
 if __name__ == '__main__':
 	app.run(debug=True)
