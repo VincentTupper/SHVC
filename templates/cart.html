@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+{%block content%}
+  <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="/">SHVC</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="/">Home</a>
+              <a class="nav-item nav-link" href="/about">About</a>
+              <a class="nav-item nav-link" href="/shop">Shop</a>
+            </div>
+
+            <div class="navbar-nav">
+              {%if usertype == 'Admin'%}
+              <a class="nav-item nav-link" href="/admin">Admin</a>
+              {%endif%}
+              {%if username == ''%}
+              <a class="nav-item nav-link" href="/login">Login</a>
+              <a class="nav-item nav-link" href="/register">Register</a>
+              {%else%}
+              <a class="nav-item nav-link" href="/cart">Cart</a>
+              <a class="nav-item nav-link" href="/account">Account</a>
+              <a class="nav-item nav-link" href="/logout">Logout</a>
+              {%endif%}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+
+    <div class="content-section">
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-4">{{username}}'s Cart</legend>
+        <div class="form-group">
+          <b> Items </b> <br>
+          <table class = "data-table">
+            <thead>
+              <td style="text-align: center;">Order Item</td>
+              <td style="text-align: center;">Product</td>
+              <td style="text-align: center;">Quantity</td>
+              <td style="text-align: center;">Price</td>
+            </thead>
+
+            {%for row in basket%}
+            <tr>
+              <td style="text-align: center;"> {{loop.index}} </td>
+              <td style="text-align: center;"> {{row[0]}} </td>
+              <td style="text-align: center;"> {{row[1]}} </td>
+              <td style="text-align: center;"> {{row[2]}} </td>
+
+              <form method="POST" action="removefrombasket">
+                <input type="hidden" name="product" value='{{loop.index}}'>
+                <td> <input type="submit" value="Remove"> </td>
+              </form>
+
+            </tr>
+            {%endfor%}
+
+            <form method="POST" action="removeallfrombasket">
+              <input class="removeall"  type="submit" value="Remove All">
+            </form>
+        </div>
+
+        <div>
+          <form method="POST" action="checkout">
+            <input class="checkout" type="submit" value="Checkout">
+          </form>
+
+        <div class="price">
+          Total Price: £{{totalprice}}
+        </div>
+        <div>
+
+
+      </fieldset>
+    </div>
+
+
+{%endblock content%}

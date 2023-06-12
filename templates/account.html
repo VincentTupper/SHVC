@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+{%block content%}
+  <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="/">SHVC</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="/">Home</a>
+              <a class="nav-item nav-link" href="/about">About</a>
+              <a class="nav-item nav-link" href="/shop">Shop</a>
+            </div>
+
+            <div class="navbar-nav">
+              {%if usertype == 'Admin'%}
+              <a class="nav-item nav-link" href="/admin">Admin</a>
+              {%endif%}
+              {%if username == ''%}
+              <a class="nav-item nav-link" href="/login">Login</a>
+              <a class="nav-item nav-link" href="/register">Register</a>
+              {%else%}
+              <a class="nav-item nav-link" href="/cart">Cart</a>
+              <a class="nav-item nav-link" href="/account">Account</a>
+              <a class="nav-item nav-link" href="/logout">Logout</a>
+              {%endif%}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    
+    <div class="content-section">
+      <legend class="border-bottom mb-4">{{username}} Account Page</legend>
+      <b> Account information: </b> <br>
+      Email - {{email}} <br>
+      Username - {{username}} <br>
+      Average Order Amount - £{{averageprice}}
+    </div>
+
+    <b> {{username}}'s Orders: </b>
+
+    <table class="date-table">
+      <thead>
+        <td>Order</td>
+        <td>Products</td>
+        <td>Quantity</td>
+        <td>Total Price</td>
+        <td>Date</td>
+      </thead>
+
+      {%for order in orders%}
+        <tr>
+          <td>{{order[0]}}</td>
+          <td>{{order[2]}}</td>
+          <td>{{order[3]}}</td>
+          <td>£{{order[4]}}</td>
+          <td>{{order[5]}}</td>
+        </tr>
+      {%endfor%}
+      </table>
+
+  <!--  
+  <table class = "data-table">
+    <thead>
+      <td>ID</td>
+      <td>Email</td>
+      <td>Username</td>
+      <td>Password</td>
+      <td>User Type</td>
+    </thead>
+
+    {%for row in userows%}
+      <tr>
+        <td>{{row["userid"]}}</td>
+        <td>{{row["email"]}}</td>
+        <td>{{row["username"]}}</td>
+        <td>{{row["password"]}}</td>
+        <td>{{row['usertype']}}</td>
+      </tr>
+    {%endfor%}
+  </table>
+  -->
+{%endblock content%}

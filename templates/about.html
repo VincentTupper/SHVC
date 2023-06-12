@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{%block content%}
+  <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="/">SHVC</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="/">Home</a>
+              <a class="nav-item nav-link" href="/about">About</a>
+              <a class="nav-item nav-link" href="/shop">Shop</a>
+            </div>
+
+            <div class="navbar-nav">
+              {%if usertype == 'Admin'%}
+              <a class="nav-item nav-link" href="/admin">Admin</a>
+              {%endif%}
+              {%if username == ''%}
+              <a class="nav-item nav-link" href="/login">Login</a>
+              <a class="nav-item nav-link" href="/register">Register</a>
+              {%else%}
+              <a class="nav-item nav-link" href="/cart">Cart</a>
+              <a class="nav-item nav-link" href="/account">Account</a>
+              <a class="nav-item nav-link" href="/logout">Logout</a>
+              {%endif%}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+	<h1> Information: </h1>
+
+	<div class="content-section"> 
+		<b>Contact Information :</b> 01306 889642
+	</div>
+
+	<div class="content-section"> 
+		<b>Location:</b> RH5 4NP, South Holmwood
+	</div>
+
+	<div class="content-section"> 
+		<b>Opening Times:</b> <br>
+		Monday: 5-10:30<br>
+		Tuesday: 5-10:30<br>
+		Wednesday: 5-10:30<br>
+		Thursday: 5-10:30<br>
+		Friday: 5-10:30<br>
+		Saturday: 4-11<br>
+		Sunday: 2-11
+	</div>
+
+	<small class="text-muted">
+		NOTE: Times are in the British Timezone and PM
+	 </small>
+
+{%endblock content%}

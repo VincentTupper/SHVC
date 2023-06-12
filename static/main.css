@@ -1,0 +1,118 @@
+body {
+  background: #fff;
+  color: #333333;
+  margin-top: 5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #444444;
+}
+
+.bg-steel {
+  background-color: #374B65;
+}
+
+.site-header .navbar-nav .nav-link {
+  color: #cbd5db;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
+
+.content-section {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.data-table {
+  padding: 10px 20px;
+  width: 50%;
+  float: left;
+  display: inline-block;
+}
+
+th,td {
+  border-bottom: 1px solid #ddd;
+  padding: 5px 10px;
+}
+
+.product-table {
+  border-bottom: 1px solid #ddd;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.register-form {
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: solid 1.25px black;
+  width: 25%;
+}
+
+.submit-button {
+  padding: 5px 5px;
+  border-radius: 25px;
+  border: solid 1.25px black;
+  width: 15%
+}
+
+.quantity {
+  width: 25px;
+  border: solid 1.25px black;
+  border-radius: 5px;
+}
+
+.price {
+  position: absolute;
+  bottom: 0;
+  right: 8%;
+  padding: 10px;
+}
+
+.buy-button {
+  border: none;
+  background: steelblue;
+  color: #cbd5db;
+  padding: 5px 5px;
+  font-size: 17px;
+  border-radius: 5px;
+  position: relative;
+  box-sizing: border-box;
+  transition: all 600ms ease; 
+}
+
+.buy-button:hover {
+  color: #ffffff;
+}
+
+.removeall {
+  position: absolute;
+  right: 40%;
+}
+
+.checkout {
+  border: none;
+  background: steelblue;
+  color: #cbd5db;
+  padding: 5px 5px;
+  font-size: 17px;
+  border-radius: 5px;
+  position: absolute;
+  box-sizing: border-box;
+  transition: all 600ms ease; 
+  bottom: 1%;
+  right: 1%;
+}
+.checkout:hover {
+  color: #ffffff;
+}
+

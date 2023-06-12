@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+{%block content%}
+  <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="/">SHVC</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="/">Home</a>
+              <a class="nav-item nav-link" href="/about">About</a>
+              <a class="nav-item nav-link" href="/shop">Shop</a>
+            </div>
+
+            <div class="navbar-nav">
+              {%if usertype == 'Admin'%}
+              <a class="nav-item nav-link" href="/admin">Admin</a>
+              {%endif%}
+              {%if username == ''%}
+              <a class="nav-item nav-link" href="/login">Login</a>
+              <a class="nav-item nav-link" href="/register">Register</a>
+              {%else%}
+              <a class="nav-item nav-link" href="/cart">Cart</a>
+              <a class="nav-item nav-link" href="/account">Account</a>
+              <a class="nav-item nav-link" href="/logout">Logout</a>
+              {%endif%}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+
+  <table class="data-table">
+  <thead>
+    <td style="text-align:center">Product</td>
+    <td style="text-align:center">Price</td>
+  </thead>
+  {%for product in productshop %}
+    <form method="POST" action="/addtobasket">
+      <tr>
+        <td style="text-align:center">{{product["Product"]}}</td>
+        <td style="text-align:center">£{{product["Price"]}}</td>
+        <input type="hidden" name="product" value="{{product['Product']}}">
+        <input type="hidden" name="price" value="{{product['Price']}}">
+        {%if username != ''%}
+        <td> <input class="quantity" type="text" name="quantity" value=1> </td>
+        <td> <input class="buy-button" type="submit" value="Buy"> </td>
+        {%endif%}
+      </tr>
+    </form>
+  {%endfor%}
+</table>
+
+<table class="data-table">
+  <legend>Top 5 Popular Products</legend>
+  <thead>
+    <td> Product </td>
+    <td> Orders </td>
+  </thead>
+  {%for productpop in productpop%}
+    {%if productpop["Count"] >=1%}
+      <tr>
+        <td> {{productpop["Product"]}} </td>
+        <td style="text-align:center"> {{productpop["Count"]}} </td>
+      </tr>
+    {%endif%}
+  {%endfor%}
+
+
+{%endblock content%}
